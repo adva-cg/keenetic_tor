@@ -1,8 +1,17 @@
 User root
 PidFile /opt/var/run/tor.pid
-ExcludeExitNodes {RU},{UA},{AM},{KG},{BY}
-StrictNodes 1
-TransPort 192.168.1.1:9141
+
+#ExcludeExitNodes {RU},{UA},{AM},{KG},{BY}
+#StrictNodes 1
+
+ExitNodes {US}
+StrictExitNodes 1
+
+RunAsDaemon 1
+Log notice file /opt/var/log/tor/notices.log
+
+#TransPort 192.168.1.1:9141
+TransPort 127.0.0.1:9141
 ExitRelay 0
 ExitPolicy reject *:*
 ExitPolicy reject6 *:*
@@ -10,9 +19,9 @@ GeoIPFile /opt/share/tor/geoip
 GeoIPv6File /opt/share/tor/geoip6
 DataDirectory /tmp/tor
 
-VirtualAddrNetwork 10.254.0.0/16
-DNSPort 127.0.0.1:9053
-AutomapHostsOnResolve 1
+# VirtualAddrNetwork 10.254.0.0/16
+# DNSPort 127.0.0.1:9053
+# AutomapHostsOnResolve 1
 
 UseBridges 1
 
@@ -22,3 +31,7 @@ ClientTransportPlugin obfs4 exec /opt/sbin/obfs4proxy managed
 # Bridge obfs4 88.99.6.209:51804 FDF90B9AC2466DD54B6A3F9DB09774CD47BFA9A7 cert=dDXmykTtwadQd7dMXIp/+eIqCIeJ/C7q/YW57oZO/Xbu2kOEYzOJkcnuhiMsRpi9ph3faw iat-mode=0
 # Bridge obfs4 104.185.22.161:60000 47A60A4BF32B6308C325C141181125F81B274F9D cert=BL67v8sPr039nC68mVMX2TOrJugKHDbNeg+J2VYMMuuxtpMT+twHT7VUgkiIFst+rwtLLw iat-mode=0
 #######################
+Bridge obfs4 94.209.98.133:36912 AC77472297C4040CCDD8F9E191D9A39F2ED53499 cert=DVsoSQNdfIg8FmYpjdaNC2pw5t3E+9XsHxSQOOMimEtn2sYImiWjUCsNdQLrCe5cmcfFUg iat-mode=0
+Bridge obfs4 103.29.64.211:443 1B8DA674BCB03A89B0054DBFEDBDE7EBB7F543AB cert=vJ8Gb7BuIKTxAFy8XaAw7WCiYaXgv3OZ6G1m2OJ7H85+eTpj0IQTsR89eym7DfoYAYAaXQ iat-mode=0
+Bridge obfs4 135.125.216.190:39347 299F6BB09C6BC408B3DC9F6467F2E80B96B02D99 cert=9p2V7vPx1z/K9Ofb5Wt+LmR3Ewr7clHHHvlpa+/XDNz6drB2cakSJKmtMN4LjxqrCbmKBQ iat-mode=0
+Bridge obfs4 46.226.104.186:17502 65C1B3650A9BB9F041F0FFA3E8C175038D6673F6 cert=OoTDqahs8k1+6g09viQ3ArtVAC5tmJ+IhZ7IAv3M0Szcw9C8PqivdLXX4CB+/BBX8arTFg iat-mode=0

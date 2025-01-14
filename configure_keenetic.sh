@@ -12,7 +12,7 @@ TXT_BLUE='\e[0;34m'
 TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
-github_link='https://raw.githubusercontent.com/PsychodelEKS/keenetic_tor/master'
+github_link='https://raw.githubusercontent.com/adva-cg/keenetic_tor/master'
 lanip=$($WGET -qO- localhost:79/rci/show/interface/Bridge0/address)
 
 lanip="${lanip%\"}"
@@ -204,20 +204,20 @@ function _install_base_environment()
         echo_RESULT $?
         chmod +x /opt/bin/unblock_ipset.sh
 
-        rm -f /opt/bin/unblock_dnsmasq.sh
-        echo -en "$WGET -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_dnsmasq.sh...    "
-        $WGET -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_dnsmasq.sh
-        echo_RESULT $?
-        chmod +x /opt/bin/unblock_dnsmasq.sh
+        # rm -f /opt/bin/unblock_dnsmasq.sh
+        # echo -en "$WGET -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_dnsmasq.sh...    "
+        # $WGET -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_dnsmasq.sh
+        # echo_RESULT $?
+        # chmod +x /opt/bin/unblock_dnsmasq.sh
 
-        /opt/bin/unblock_dnsmasq.sh
-        echo_RESULT $?
+        # /opt/bin/unblock_dnsmasq.sh
+        # echo_RESULT $?
 
-        rm -f /opt/bin/update_dnsmasq.sh
-        echo -en "$WGET -O /opt/bin/update_dnsmasq.sh $github_link/update_dnsmasq.sh...    "
-        $WGET -O /opt/bin/update_dnsmasq.sh $github_link/update_dnsmasq.sh
-        echo_RESULT $?
-        chmod +x /opt/bin/update_dnsmasq.sh
+        # rm -f /opt/bin/update_dnsmasq.sh
+        #echo -en "$WGET -O /opt/bin/update_dnsmasq.sh $github_link/update_dnsmasq.sh...    "
+        #$WGET -O /opt/bin/update_dnsmasq.sh $github_link/update_dnsmasq.sh
+        #echo_RESULT $?
+        #chmod +x /opt/bin/update_dnsmasq.sh
 
         rm -f /opt/etc/init.d/S99unblock
         echo -en "$WGET -O /opt/etc/init.d/S99unblock $github_link/S99unblock...    "
@@ -235,16 +235,16 @@ function _install_base_environment()
         sed -i "s/hash:net/${set_type}/g" /opt/etc/ndm/netfilter.d/100-redirect.sh
         sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/ndm/netfilter.d/100-redirect.sh
 
-        rm -f /opt/etc/dnsmasq.conf
-        echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf...    "
-        $WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf
-        echo_RESULT $?
-        sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
+        #rm -f /opt/etc/dnsmasq.conf
+        #echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf...    "
+        #$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf
+        #echo_RESULT $?
+        #sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 
-        rm -f /opt/etc/hosts.dnsmasq
-        echo -en "$WGET -O /opt/etc/hosts.dnsmasq $github_link/hosts.dnsmasq...    "
-        $WGET -O /opt/etc/hosts.dnsmasq $github_link/hosts.dnsmasq
-        echo_RESULT $?
+        #rm -f /opt/etc/hosts.dnsmasq
+        #echo -en "$WGET -O /opt/etc/hosts.dnsmasq $github_link/hosts.dnsmasq...    "
+        #$WGET -O /opt/etc/hosts.dnsmasq $github_link/hosts.dnsmasq
+        #echo_RESULT $?
 
         if [[ ! -d '/opt/etc/cron.d' ]]; then
             mkdir -p /opt/etc/cron.d
