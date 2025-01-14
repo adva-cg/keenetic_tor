@@ -17,6 +17,7 @@
 ## Автоматическая установка:
 ```shell script
 opkg update
+opkg remove wget-nossl
 opkg install bash wget-ssl ca-certificates
 wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/adva-cg/keenetic_tor/master/configure_keenetic.sh
 chmod +x /opt/bin/configure_keenetic.sh
